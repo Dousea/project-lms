@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  enum role: { admin: 'admin', moderator: 'moderator', member: 'member' }
+  enum role: { Admin: 'admin', Moderator: 'moderator', Member: 'member' }
   validates :role, inclusion: { in: roles.keys }
+  self.inheritance_column = :role
 end
