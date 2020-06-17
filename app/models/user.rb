@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum role: { Admin: 'admin', Moderator: 'moderator', Member: 'member' }
-  validates :role, inclusion: { in: roles.keys }
+  validates :role, inclusion: { in: roles.keys }, allow_blank: true
   self.inheritance_column = :role
 
   validates :name, :address, :phone_number, presence: true
