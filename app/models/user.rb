@@ -9,4 +9,6 @@ class User < ApplicationRecord
   enum role: { Admin: 'admin', Moderator: 'moderator', Member: 'member' }
   validates :role, inclusion: { in: roles.keys }
   self.inheritance_column = :role
+
+  validates :name, :address, :phone_number, presence: true
 end
