@@ -6,7 +6,7 @@ class Book < ApplicationRecord
   has_and_belongs_to_many :authors
   has_and_belongs_to_many :subjects
   validates :title, presence: true
-  validates_time :published_at
+  validates_date :published_at
   validate :must_have_authors
   validate :must_have_subjects
   accepts_nested_attributes_for :authors, allow_destroy: true
