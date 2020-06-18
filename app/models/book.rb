@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   belongs_to :publisher
   has_and_belongs_to_many :authors
   has_and_belongs_to_many :subjects
-  validates :title, :published_at, presence: true
+  validates :title, presence: true
   validates_time :published_at
   validate :must_have_authors
   validate :must_have_subjects
