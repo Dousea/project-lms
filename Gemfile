@@ -31,6 +31,8 @@ gem 'cancancan'
 gem 'ransack'
 # Use Kaminari for pagination
 gem 'kaminari'
+# Use Timeliness for date validator
+gem 'validates_timeliness', '~> 5.0.0.alpha3'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
