@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   authorize_resource
 
   def index
-    @users = User.all
+    params[:page] = 1 unless params.has_key? :page
+    @users = User.page(params[:page])
   end
 
   def show
