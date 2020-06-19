@@ -1,0 +1,17 @@
+<h1>Listing Publishers</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+ 
+  <% @publishers.each do |publisher| %>
+    <tr>
+      <td><%= publisher.name %></td>
+      <td><%= link_to 'Show', books_publisher_path(publisher) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= paginate @publishers %>
