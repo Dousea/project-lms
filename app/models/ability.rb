@@ -7,7 +7,12 @@ class Ability
     return unless user.present?
 
     can :read, Book if user.Member?
-    can :manage, Book if user.Moderator? || user.Admin?
+
+    if user.Moderator? || user.Admin?
+      can :manage, Book
+      can :manage, Publisher
+    end
+
     can :manage, User if user.Admin?
   end
 end
