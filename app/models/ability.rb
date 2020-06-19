@@ -11,6 +11,7 @@ class Ability
     if user.Moderator? || user.Admin?
       can :manage, Book
       can :manage, Publisher
+      can :manage, Subject
     end
 
     can :manage, User if user.Admin?
