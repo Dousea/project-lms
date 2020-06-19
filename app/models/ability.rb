@@ -12,6 +12,7 @@ class Ability
       can :manage, Book
       can :manage, Publisher
       can :manage, Subject
+      can :manage, Author
     end
 
     can :manage, User if user.Admin?

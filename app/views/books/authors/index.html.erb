@@ -1,0 +1,17 @@
+<h1>Listing Authors</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+ 
+  <% @authors.each do |author| %>
+    <tr>
+      <td><%= author.name %></td>
+      <td><%= link_to 'Show', books_author_path(author) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= paginate @authors %>

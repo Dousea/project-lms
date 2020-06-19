@@ -1,0 +1,2 @@
+module Books::AuthorsHelper
+end

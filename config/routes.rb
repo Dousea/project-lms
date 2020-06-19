@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :books do
     resources :publishers
     resources :subjects
+    resources :authors    
   end
   resources :books
   root to: 'home#index'
