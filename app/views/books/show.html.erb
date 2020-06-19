@@ -10,14 +10,14 @@
 
 <p>
   <strong>Publisher:</strong>
-  <%= @book.publisher.name %>
+  <%= link_to @book.publisher.name, books_publisher_path(@book.publisher) %>
 </p>
 
 <p>
   <strong>Authors:</strong>
   <ul>
     <% @book.authors.each do |author| %>
-      <li><%= author.name %></li>
+      <li><%= link_to author.name, books_author_path(author) %></li>
     <% end %>
   </ul>
 </p>
@@ -26,7 +26,7 @@
   <strong>Subjects:</strong>
   <ul>
     <% @book.subjects.each do |subject| %>
-      <li><%= subject.name %></li>
+      <li><%= link_to subject.name, books_subject_path(subject) %></li>
     <% end %>
   </ul>
 </p>
