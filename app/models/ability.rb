@@ -14,16 +14,12 @@ class Ability
   private
 
   def initialize_member
-    can :read, Transaction
-    can :read, Book
+    can %i[read create], Transaction
+    can :read, [Book, Publisher, Subject, Author]
   end
 
   def initialize_moderator
-    can :manage, Book
-    can :manage, Publisher
-    can :manage, Subject
-    can :manage, Author
-    can :manage, Transaction
+    can :manage, [Book, Publisher, Subject, Author, Transaction]
   end
 
   def initialize_admin
