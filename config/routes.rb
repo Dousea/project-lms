@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   namespace :books do
     resources :publishers
     resources :subjects
-    resources :authors    
+    resources :authors
   end
   resources :books
+  resources :transactions
   root to: 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
