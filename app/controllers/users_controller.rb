@@ -4,8 +4,9 @@ class UsersController < ApplicationController
   authorize_resource
 
   def index
-    params[:page] = 1 unless params.has_key? :page
-    @users = User.page(params[:page])
+    params[:page] = 1 unless params.key? :page
+    @users = User.where.not(id: current_user.id).page(params[:page])
+    redirect_to root_path if current_user.Member?
   end
 
   def show

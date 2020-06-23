@@ -1,2 +1,55 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="text-center w-100">
+  Welcome, <%= current_user.nil? ? 'guest' : current_user.name %>!
+</div>
+
+<ul class="nav justify-content-center">
+
+  <% if current_user.nil? %>
+    <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+    <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
+  <% else %>
+    <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+
+    <li class="nav-item">
+      <% unless current_user.Member? %>
+        <% if can? :read, User %>
+          <%= link_to 'Users', users_path, class: 'nav-link' %>
+        <% end %>
+      <% else %>
+        <%= link_to 'Profile', user_path(current_user), class: 'nav-link' %>
+      <% end %>
+    </li>
+      
+
+    <% if can? :read, Book %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Books</a>
+        <div class="dropdown-menu">
+        
+          <%= link_to 'Books', books_path, class: 'dropdown-item' %>
+
+          <% if can? :read, Author %>
+            <%= link_to 'Authors', books_authors_path, class: 'dropdown-item' %>
+          <% end %>
+
+          <% if can? :read, Publisher %>
+            <%= link_to 'Publishers', books_publishers_path, class: 'dropdown-item' %>
+          <% end %>
+          
+          <% if can? :read, Subject %>
+            <%= link_to 'Subjects', books_subjects_path, class: 'dropdown-item' %>
+          <% end %>
+
+        </div>
+      </li>
+    <% end %>
+
+    <% if can? :read, Transaction %>
+      <li class="nav-item">
+        <%= link_to 'Transactions', transactions_path, class: 'nav-link' %>
+      </li>
+    <% end %>
+
+  <% end %>
+
+</ul>

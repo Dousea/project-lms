@@ -13,4 +13,26 @@ class TransactionsController < ApplicationController
   rescue ActiveRecord::RecordNotFound => e
     redirect_to transactions_path, alert: e.message
   end
+
+  def new
+    @transaction = Transaction.new
+  end
+
+  def create
+    @transaction = Transaction.new(transaction_params)
+    @transaction.member = current_user unless current_user.Member?
+    @transaction.due_date = Date.current.advance(weeks: 2).to_s
+
+    if @transaction.save
+      redirect_to @transaction
+    else
+      render 'new'
+    end
+  end
+
+  private
+
+  def transaction_params
+    params.require(:transaction).permit(:book_id)
+  end
 end

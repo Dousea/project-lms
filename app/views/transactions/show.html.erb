@@ -10,17 +10,7 @@
 
 <p>
   <strong>Due date:</strong>
-  <%= link_to @transaction.due_date %>
-</p>
-
-<p>
-  <strong>Created at:</strong>
-  <%= @transaction.created_at %>
-</p>
-
-<p>
-  <strong>Updated at:</strong>
-  <%= @transaction.updated_at %>
+  <%= @transaction.due_date %>
 </p>
 
 <%= link_to 'Back', transactions_path %>

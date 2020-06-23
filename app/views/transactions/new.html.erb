@@ -1,0 +1,35 @@
+<%= form_with scope: :transaction, url: transactions_path, local: true do |form| %>
+ 
+  <% if @transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@transaction.errors.count, "error") %> prohibited
+        this transaction from being saved:
+      </h2>
+      <ul>
+        <% @transaction.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% unless current_user.Member? %>
+    <p>
+      <%= form.label :member_id %><br>
+      <%= form.collection_select :member_id, Member.all, :id, :name %>
+    </p>
+  <% end %>
+ 
+  <p>
+    <%= form.label :book_id %><br>
+    <%= form.collection_select :book_id, Book.all, :id, :title %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
+ 
+<%= link_to 'Back', transactions_path %>
