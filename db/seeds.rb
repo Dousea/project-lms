@@ -53,3 +53,5 @@ def seed_books
     end
   end
 end
+
+seed_books
