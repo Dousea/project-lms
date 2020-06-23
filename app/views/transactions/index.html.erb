@@ -1,4 +1,11 @@
-<%= link_to 'New transaction', new_transaction_path %>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Home', root_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Transactions</li>
+  </ol>
+</nav>
+
+<%= link_to 'New transaction', new_transaction_path, class: 'btn btn-primary mb-3' %>
 
 <% if @transactions.length > 0%>
   <table class="table">
@@ -7,7 +14,7 @@
         <th scope="col">#</th>
         <th scope="col">Member</th>
         <th scope="col">Book</th>
-        <th scope="col" colspan="3">Options</th>
+        <th scope="col">Options</th>
       </tr>
     </thead>
 
@@ -20,18 +27,6 @@
           
           <% if can? :read, transaction %>
             <td><%= link_to 'Show', transaction_path(transaction) %></td>
-          <% end %>
-
-          <% if can? :update, transaction %>
-            <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
-          <% end %>
-
-          <% if can? :destroy, transaction %>
-            <td>
-              <%= link_to 'Destroy', transaction_path(transaction),
-                          method: :delete,
-                          data: { confirm: 'Are you sure?' } %>
-            </td>
           <% end %>
 
         </tr>

@@ -1,3 +1,12 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Home', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Books', books_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Publishers', books_publishers_path %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= @publisher.id %></li>
+  </ol>
+</nav>
+
 <p>
   <strong>Name:</strong>
   <%= @publisher.name %>
@@ -11,5 +20,3 @@
     <% end %>
   </ul>
 </p>
-
-<%= link_to 'Back', books_publishers_path %>

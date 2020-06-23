@@ -1,3 +1,11 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Home', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Transactions', transactions_path %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= @transaction.id %></li>
+  </ol>
+</nav>
+
 <p>
   <strong>Member:</strong>
   <%= link_to @transaction.member.name, user_path(@transaction.member) %>
@@ -12,5 +20,3 @@
   <strong>Due date:</strong>
   <%= @transaction.due_date %>
 </p>
-
-<%= link_to 'Back', transactions_path %>

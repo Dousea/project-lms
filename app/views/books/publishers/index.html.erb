@@ -1,17 +1,33 @@
-<h1>Listing Publishers</h1>
- 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-  </tr>
- 
-  <% @publishers.each do |publisher| %>
-    <tr>
-      <td><%= publisher.name %></td>
-      <td><%= link_to 'Show', books_publisher_path(publisher) %></td>
-    </tr>
-  <% end %>
-</table>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Home', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Books', books_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Publishers</li>
+  </ol>
+</nav>
 
-<%= paginate @publishers %>
+<% if @publishers.length > 0 %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @publishers.each do |publisher| %>
+        <tr>
+          <td><%= publisher.id %></td>
+          <td><%= publisher.name %></td>
+          <td><%= link_to 'Show', books_publisher_path(publisher) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @publishers %>
+<% else %>
+  No publisher
+<% end %>
